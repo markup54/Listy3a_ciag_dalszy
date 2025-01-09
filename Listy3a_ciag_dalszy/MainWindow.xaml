@@ -1,0 +1,56 @@
+﻿<Window x:Class="Listy3a_ciag_dalszy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Listy3a_ciag_dalszy"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <DataGrid ItemsSource="{Binding GryKomputerowe}"
+                  AutoGenerateColumns="False"
+                 
+                  RowBackground="CornflowerBlue"
+                  AlternationCount="3"
+                  AlternatingRowBackground="Azure"
+                  >
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Nazwa gry"
+                    Binding="{Binding Nazwa}"
+                    />
+
+
+                <DataGridComboBoxColumn
+                    Header="Gatunek"
+                    SelectedItemBinding="{Binding Gatunek}"
+                    x:Name="KolumnaGatunek"
+                    />
+                <DataGridCheckBoxColumn
+                Header="Tryb wieloosobowy"
+                Binding="{Binding Multiplayer}"/>
+                <DataGridTextColumn
+                    Header="Minimalny wiek gracza"
+                    Binding="{Binding Wiek}"
+                    />
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <UniformGrid Columns="2">
+            <Label>Nazwa gry</Label>
+            <TextBox x:Name="nazwa_gry_textbox"></TextBox>
+            <Label>Gatunek</Label>
+            <ComboBox x:Name="gatunki_combo_box" 
+                      ItemsSource="{Binding gatunki}"/>
+            <Label>Wiek</Label>
+            <TextBox x:Name="wiek_textbox"/>
+            <Label>Multiplayer</Label>
+            <CheckBox x:Name="multi_checkbox"/>
+            <TextBlock></TextBlock>
+            <Button>Dodaj do listy</Button>
+        </UniformGrid>
+        
+    </StackPanel>
+</Window>
