@@ -49,8 +49,18 @@
             <Label>Multiplayer</Label>
             <CheckBox x:Name="multi_checkbox"/>
             <TextBlock></TextBlock>
-            <Button>Dodaj do listy</Button>
+            <Button Click="Button_Click_DodaJgRE">Dodaj do listy</Button>
         </UniformGrid>
-        
+        <Separator/>
+        <Label>wybierz kategorię gier do wyświetlenia</Label>
+        <ComboBox x:Name="kategoria_comboBox" 
+                  ItemsSource="{Binding gatunki}"
+                  />
+        <Button Click="Button_Click_Wybierz">Wyswietl</Button>
+        <DataGrid ItemsSource="{Binding WybraneGryKomputerowe}"></DataGrid>
+        <Separator Margin="20"/>
+        <Label>Podaj id gry do usunięcia</Label>
+        <TextBox x:Name="id_textbox"></TextBox>
+        <Button Click="Button_Click_Usun">usuń</Button>
     </StackPanel>
 </Window>

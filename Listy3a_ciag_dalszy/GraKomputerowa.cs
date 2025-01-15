@@ -8,6 +8,8 @@ namespace Listy3a_ciag_dalszy
 {
     public class GraKomputerowa
     {
+        public static int liczbaInstancji { get; set; } = 0;
+        public int Id { get; set; }
         private string _nazwa;
         public string Nazwa
         {
@@ -24,6 +26,8 @@ namespace Listy3a_ciag_dalszy
 
         public GraKomputerowa(string nazwa, string gatunek, int wiek, bool multiplayer)
         {
+            liczbaInstancji++;
+            Id = liczbaInstancji;
             Nazwa = nazwa;
             Gatunek = gatunek;
             Wiek = wiek;

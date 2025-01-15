@@ -22,6 +22,7 @@ namespace Listy3a_ciag_dalszy
     public partial class MainWindow : Window
     {
         public ObservableCollection<GraKomputerowa> GryKomputerowe { get; set; }
+        public ObservableCollection<GraKomputerowa> WybraneGryKomputerowe { get; set; } = new ObservableCollection<GraKomputerowa>();
         public List<string> gatunki { get; set; } = new List<string>() { "rpg", "fantasy", "zręcznościowa", "fps" };
         public MainWindow()
         {
@@ -45,6 +46,43 @@ namespace Listy3a_ciag_dalszy
 
         }
 
+        private void Button_Click_DodaJgRE(object sender, RoutedEventArgs e)
+        {
+            string nazwa = nazwa_gry_textbox.Text;
+            string kategoria = gatunki_combo_box.Text;
+            int wiek;
+            if (int.TryParse(wiek_textbox.Text, out wiek)){
+                if(multi_checkbox.IsChecked == true)
+                {
+                    GryKomputerowe.Add(new GraKomputerowa(nazwa, kategoria, wiek, true));
+                }
+                else
+                {
+                    GryKomputerowe.Add(new GraKomputerowa(nazwa, kategoria, wiek, false));
+                }
+            }
+            else
+            {
+                MessageBox.Show("wiek musi być liczbą");
+            }
+        }
 
+        private void Button_Click_Wybierz(object sender, RoutedEventArgs e)
+        {
+            string gatunek = kategoria_comboBox.Text;
+            WybraneGryKomputerowe.Clear();
+            for(int i = 0; i < GryKomputerowe.Count; i++)
+            {
+                if (GryKomputerowe[i].Gatunek == gatunek)
+                {
+                    WybraneGryKomputerowe.Add(GryKomputerowe[i]);
+                }
+            }
+        }
+
+        private void Button_Click_Usun(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
